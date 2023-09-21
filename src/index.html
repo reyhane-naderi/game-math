@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="/src/style.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
+
+</head>
+
+
+
+<body class="font-mono box-border mt-6 text-slate-100 bg-gradient-to-r  via-slate-200 to-slate-300 from-slate-100  mx-auto flex flex-col justify-center h-screen m-0">
+    <div class="flex items-center justify-center align-middle">
+        <div class="game-container gap-4 box-content justify-center p-10 border-2 border-black relative  shadow-black rounded-lg bg-black flex flex-col  ">
+            <div class="header h-28 text-white text-2xl mt-2  shadow-lg rounded-lg bg-red-500 p-6 flex items-center justify-center">
+                <h1 class="text-2xl font-bold text-center"> Math Sprint Game </h1>
+            </div>
+
+            <!-- Splash Page -->
+            <div class=" card" id="splash-page">
+                <form id="start-form">
+                    <div class="selection-container  relative rounded-lg flex flex-col gap-6 items-center shadow-xl">
+                        <!-- 10 Questions Radio Input -->
+                        <div class="radio-container flex justify-between bg-black  h-28 border-2 border-white p-6  cursor-pointer rounded-lg w-full  text-center  hover:bg-sky-600">
+                            <label for="value-10" class="text-xl font-bold relative text-white">10 Questions</label>
+                            <input type="radio" name="questions" value="10" id="value-10" class="w-full h-20 opacity-0 relative cursor-pointer z-20 ">
+                            <span class="best-score">
+                <span> best Score</span>
+                            <span class="best-score-value"></span>
+                            </span>
+                        </div>
+                        <!-- 25Questions  -->
+                        <div class="radio-container  bg-black  h-28 flex justify-between border-2 p-2 border-white  cursor-pointer hover:bg-sky-600 rounded-lg w-full text-center">
+                            <label for="value-25" class="text-xl font-bold ">25 Questions</label>
+                            <input type="radio" name="questions" value="25" id="value-25" class="w-full h-20 opacity-0  relative cursor-pointer z-20 ">
+                            <span class="best-score relative flex-col justify-center text-center text-2xl max-w-fit">
+                    <span> best Score</span>
+                            <span class="best-score-value"></span>
+                            </span>
+                        </div>
+                        <!-- 50Questions  -->
+                        <div class="radio-container  bg-black h-28 flex justify-between border-2 p-2 border-white  cursor-pointer hover:bg-sky-600 rounded-lg w-full text-center">
+                            <label for="value-50" class="text-xl font-bold">50 Questions</label>
+                            <input type="radio" name="questions" value="50" id="value-50" class="w-full h-20 opacity-0  relative cursor-pointer z-20 ">
+                            <span class="best-score"> 
+                    <span> best Score</span>
+                            <span class="best-score-value"></span>
+                            </span>
+                        </div>
+                        <!-- 99Questions  -->
+                        <div class="radio-container bg-black h-28 flex justify-between border-2 p-2 mb-4 border-white  cursor-pointer hover:bg-sky-600 rounded-lg w-full text-center">
+                            <label for="value-99" class="text-xl font-bold">99 Questions</label>
+                            <input type="radio" name="questions" value="99" id="value-99" class="w-full h-full opacity-0  relative cursor-pointer z-20">
+                            <span class="best-score">
+                    <span> best Score</span>
+                            <span class="best-score-value"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Start Button -->
+                    <div class="selection-footer rounded-lg bg-black flex justify-around gap-2 w-full  items-center relative">
+                        <button class="start h-24  text-white text-2xl mt-4 select-none shadow-lg rounded-lg bg-sky-600  w-full" type="submit">Start Round</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Countdown Page -->
+
+            <div class="card text-center text-6xl" id="countdown-page" hidden>
+                <h1 class="countdown  cursor-pointer mt-80">3</h1>
+            </div>
+            <!-- <div style="padding: 1rem;" :style="{ color: 'red', display: 'flex' }"></div> -->
+            <!-- <div class="hidden" :class="{ 'hidden': !show }"> -->
+
+            <!-- Game Page -->
+            <div class="card " id="game-page" hidden>
+                <!-- Item Container -->
+                <div class="item-container relative text-3xl"> </div>
+                <!-- Right/Wrong Buttons -->
+                <div class="item-footer bg-black flex justify-around gap-2 w-full h-24 items-center relative ">
+                    <button class="wrong bg-red-600 p-4 w-2/5 rounded-lg cursor-pointer" onclick="select(false)"> Wrong</button>
+                    <button class="right bg-green-600 p-4 w-2/5  rounded-lg cursor-pointer border-none " onclick="select(true)">Right</button>
+                </div>
+            </div>
+            <!-- Score Page -->
+            <div class=" card" id="score-page" hidden>
+                <!-- Score Container -->
+
+                <div class="score-container  border-sky-800  rounded-lg  text-center h-2/3 flex-col flex justify-center items-center">
+                    <h1 class="title text-4xl">Your Time</h1>
+                    <h1 class="final-time mt-24 text-green-600 text-3xl"></h1>
+                    <h1 class="base-time mt-24 text-xl"></h1>
+                    <h1 class="penalty-time mt-24 text-xl text-red-600"></h1>
+                </div>
+                <!-- Play Again Button -->
+                <div class="score-footer flex h-24 relative justify-center  p-2 rounded-lg w-full text-center -top-10">
+                    <button class="play-again w-11/12 text-2xl font-bold cursor-pointer rounded-lg bg-sky-600 border-none h-14" onclick="playAgain()">Play Again</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="./shuffle.js"></script>
+    <script src="./script.js"></script>
+
+
+
+</body>
+
+</html>
